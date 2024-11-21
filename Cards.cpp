@@ -19,3 +19,10 @@ int Card::getValue() {
 int Card::getSuit() {
     return suit_;
 }
+
+std::ostream& operator<<(std::ostream& os, const Card& card) {
+    std::string valueStr = std::to_string(card.value_);
+
+    os << valueStr;
+    return os;
+}

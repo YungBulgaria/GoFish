@@ -12,4 +12,6 @@ class Card {
         Card(int s, int v);
         int getSuit();
         int getValue();
+
+        friend std::ostream& operator<<(std::ostream& os, const Card& card);
 };

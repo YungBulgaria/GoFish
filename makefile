@@ -1,36 +1,21 @@
-# Compiler
+# Define compiler and flags
 CXX = g++
-
-# Compiler flags
 CXXFLAGS = -Wall -g
 
-# Target executable
+# Define object files and executable
+OBJ = main.o Deck.o Cards.o
 TARGET = main
 
-# For deleting the target
-TARGET_DEL = main.exe
+# Build the executable
+all: $(TARGET)
 
-# Source files
-SRCS = main.cpp Cards.cpp Deck.cpp
+$(TARGET): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
 
-# Object files
-OBJS = $(SRCS:.cpp=.o)
-
-# Default rule to build and run the executable
-all: $(TARGET) run
-
-# Rule to link object files into the target executable
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-
-# Rule to compile .cpp files into .o files
+# Build object files
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Rule to run the executable
-run: $(TARGET)
-	$(TARGET)
-
-# Clean rule to remove generated files
+# Clean up
 clean:
-	del $(TARGET_DEL) $(OBJS)
+	rm -f $(OBJ) $(TARGET)
