@@ -11,6 +11,6 @@ class Game {
         bool gameOver_;
         int turn_;
     public:
-    Game();
-    void restartGame();
+        Game();
+        void restartGame();
 };
