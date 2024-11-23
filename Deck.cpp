@@ -33,14 +33,14 @@ void Deck::printDeck() {
 
 
 void Deck::shuffle() {
-    unsigned seed = 0;
-
+    std::random_device rd;
+    std::mt19937 g(rd());
     // Shuffle deck
     Card* tempDeck = new Card[52];
     for (int i = 0; i < 53; i++) {
         tempDeck[i] = deck_[i];
     }
-    std::shuffle(tempDeck, tempDeck + 52, default_random_engine(seed));
+    std::shuffle(tempDeck, tempDeck + 52, g);
 
     // Initialize the playing deck (stack) with the shuffled deck
     for (int i = 0; i < 52; i++) {
@@ -50,6 +50,17 @@ void Deck::shuffle() {
     delete[] tempDeck;
 }
 
-void Deck::peekDeck() {
+void Deck::peakDeck() {
     cout << playingDeck_.top() << endl;
+}
+
+std::vector<Card> Deck::deal(Player& p) {
+    std::vector<Card> hand;
+
+    for (int i = 0; i < 7; i++) { // Implement get hand size
+        Card card(playingDeck_.top().getSuit(), playingDeck_.top().getValue());
+        p.setCard(card);
+        playingDeck_.pop();
+    }
+    return hand;
 }

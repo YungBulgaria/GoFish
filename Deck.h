@@ -1,9 +1,12 @@
 #pragma once
 
 #include "Cards.h"
+#include "Player.h"
 
+#include <vector>
 #include <stack>
 
+class Player;
 
 class Deck {
     private:
@@ -13,5 +16,6 @@ class Deck {
         Deck();
         void printDeck();
         void shuffle();
-        void peekDeck();
+        void peakDeck();
+        std::vector<Card> deal(Player& p);
 };
