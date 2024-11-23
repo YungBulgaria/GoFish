@@ -3,7 +3,7 @@ CXX = g++
 CXXFLAGS = -Wall -g
 
 # Define object files and executable
-OBJ = main.o Deck.o Cards.o Player.o
+OBJ = main.o Deck.o Cards.o Player.o Game.o
 TARGET = main
 
 # Build the executable

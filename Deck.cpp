@@ -37,7 +37,7 @@ void Deck::shuffle() {
     std::mt19937 g(rd());
     // Shuffle deck
     Card* tempDeck = new Card[52];
-    for (int i = 0; i < 53; i++) {
+    for (int i = 0; i < 52; i++) {
         tempDeck[i] = deck_[i];
     }
     std::shuffle(tempDeck, tempDeck + 52, g);
